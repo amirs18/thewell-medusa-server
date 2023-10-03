@@ -39,7 +39,7 @@ const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-store";
 const AUTH0_BASE_CALLBACK = process.env.AUTH0_BASE_CALLBACK || "http://localhost:9000"
 
-const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
+// const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const plugins = [
   `medusa-fulfillment-manual`,
