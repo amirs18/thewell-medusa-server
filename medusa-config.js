@@ -37,6 +37,7 @@ const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000";
 
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-store";
+const AUTH0_BASE_CALLBACK = process.env.AUTH0_BASE_CALLBACK || "http://localhost:9000"
 
 const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
@@ -70,7 +71,7 @@ const plugins = [
             auth0Domain: Auth0Domain,
  
             admin: {
-                callbackUrl:`http://localhost:9000/admin/auth/auth0/cb`,
+                callbackUrl:`${AUTH0_BASE_CALLBACK}/admin/auth/auth0/cb`,
                 failureRedirect: `${ADMIN_URL}/login`,
  
 				// The success redirect can be overriden from the client by adding a query param `?redirectTo=your_url` to the auth url
@@ -86,7 +87,7 @@ const plugins = [
             },
  
             store: {
-                callbackUrl:`http://localhost:9000/store/auth/auth0/cb`,
+                callbackUrl:`${AUTH0_BASE_CALLBACK}/store/auth/auth0/cb`,
                 failureRedirect: `http://${STORE_URL}/login`,
  
 				// The success redirect can be overriden from the client by adding a query param `?redirectTo=your_url` to the auth url
