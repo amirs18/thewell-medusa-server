@@ -45,9 +45,12 @@ const plugins = [
   `medusa-fulfillment-manual`,
   `medusa-payment-manual`,
   {
-    resolve: `@medusajs/file-local`,
+    resolve: `medusa-file-minio`,
     options: {
-      upload_dir: "uploads",
+        endpoint: process.env.MINIO_ENDPOINT,
+        bucket: process.env.MINIO_BUCKET,
+        access_key_id: process.env.MINIO_ACCESS_KEY,
+        secret_access_key: process.env.MINIO_SECRET_KEY,
     },
   },
   {
@@ -138,7 +141,7 @@ const projectConfig = {
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
   database_extra:{
-    ssl: process.env.NODE_ENV==='production' ,
+    ssl: { rejectUnauthorized: false } ,
   }
   // Uncomment the following lines to enable REDIS
   // redis_url: REDIS_URL
